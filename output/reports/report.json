@@ -1,0 +1,66 @@
+{
+    "generated_at": "2026-03-23T10:44:55.180684",
+    "total_urls": 2,
+    "meta": {
+        "playwright_version": "1.58.0",
+        "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]"
+    },
+    "results": [
+        {
+            "url": "https://example.com",
+            "browser": "chromium",
+            "title": "Example Domain",
+            "success": true,
+            "viewport": {
+                "width": 1280,
+                "height": 720
+            },
+            "url_final": "https://example.com/",
+            "status": 200,
+            "load_time_sec": 0.92,
+            "screenshot": "output\\screenshots\\chromium_https___example_com.png"
+        },
+        {
+            "url": "https://example.com",
+            "browser": "firefox",
+            "title": "Example Domain",
+            "success": true,
+            "viewport": {
+                "width": 1280,
+                "height": 720
+            },
+            "url_final": "https://example.com/",
+            "status": 200,
+            "load_time_sec": 0.53,
+            "screenshot": "output\\screenshots\\firefox_https___example_com.png"
+        },
+        {
+            "url": "https://httpbin.org",
+            "browser": "chromium",
+            "title": "httpbin.org",
+            "success": true,
+            "viewport": {
+                "width": 1280,
+                "height": 720
+            },
+            "url_final": "https://httpbin.org/",
+            "status": 200,
+            "load_time_sec": 2.67,
+            "screenshot": "output\\screenshots\\chromium_https___httpbin_org.png"
+        },
+        {
+            "url": "https://httpbin.org",
+            "browser": "firefox",
+            "title": "httpbin.org",
+            "success": true,
+            "viewport": {
+                "width": 1280,
+                "height": 720
+            },
+            "url_final": "https://httpbin.org/",
+            "status": 200,
+            "load_time_sec": 3.55,
+            "screenshot": "output\\screenshots\\firefox_https___httpbin_org.png"
+        }
+    ]
+}
