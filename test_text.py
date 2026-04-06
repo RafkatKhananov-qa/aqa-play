@@ -271,7 +271,6 @@ def test_bonus_task():
                             "and text()='от 3671с/мес']")).to_have_text(re.compile(r"от\s\d+с/мес"))
         text = page.locator("//div[@class='product-cat-price-payment' "
                             "and text()='от 3671с/мес']").inner_text()
-        print(text)
 
         match = re.search(r"\d+", text)
         assert match is not None, "Число в тексте не найдено"
