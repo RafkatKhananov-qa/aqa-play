@@ -42,7 +42,7 @@ if __name__ == "__main__":
         logout_button.click()
         assert "/login" in page.url
         print(f"✅ Успешный выход! URL: {page.url}")
-        page.screenshot(path="screenshots/screenshot1.png")
+        page.screenshot(path="../screenshots/screenshot1.png")
         results["Form Authentication"] = True
 
         page.goto("https://the-internet.herokuapp.com/checkboxes")
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         assert not (checkbox_2.is_checked())
         print("✅ Checkbox 1: checked=True")
         print("✅ Checkbox 2: checked=False")
-        page.screenshot(path="screenshots/screenshot2.png")
+        page.screenshot(path="../screenshots/screenshot2.png")
         results["Checkboxes"] = True
 
         page.goto("https://the-internet.herokuapp.com/dropdown")
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         selected_text = page.locator("#dropdown option:checked").text_content()
         assert selected_text == "Option 2"
         print(f"Выбрано: {selected_text}")
-        page.screenshot(path="screenshots/screenshot3.png")
+        page.screenshot(path="../screenshots/screenshot3.png")
         results["Dropdown"] = True
 
         page.goto("https://the-internet.herokuapp.com/inputs")
@@ -77,7 +77,7 @@ if __name__ == "__main__":
         input_field.fill("999")
         assert input_field.input_value() == "999"
         print("✅ Введено: 999")
-        page.screenshot(path="screenshots/screenshot4.png")
+        page.screenshot(path="../screenshots/screenshot4.png")
         results["Inputs"] = True
 
         page.goto("https://the-internet.herokuapp.com/hovers")
@@ -86,7 +86,7 @@ if __name__ == "__main__":
         user_name_text = page.locator("//div[@class='figure'][1]//div[@class='figcaption']//h5")
         assert user_name_text.is_visible()
         print("✅ Навели на изображение. Текст: name: user1")
-        page.screenshot(path="screenshots/screenshot5.png")
+        page.screenshot(path="../screenshots/screenshot5.png")
         results["Hovers"] = True
 
         browser.close()
