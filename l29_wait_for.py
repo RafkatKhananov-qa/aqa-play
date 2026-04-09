@@ -1,3 +1,5 @@
+import re
+
 from playwright.sync_api import sync_playwright, expect
 import time
 
@@ -94,4 +96,7 @@ def test_29_05():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
-        page.goto("https://the-internet.herokuapp.com/user/123")
+        page.goto("https://example.com/user/123")
+        page.wait_for_url(re.compile(r"/user/\d+"))
+        assert re.search(r"/user/\d+", page.url)
+        print(page.url)
