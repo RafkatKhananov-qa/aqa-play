@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 
 from playwright.sync_api import sync_playwright, expect
 import time
@@ -100,3 +101,51 @@ def test_29_05():
         page.wait_for_url(re.compile(r"/user/\d+"))
         assert re.search(r"/user/\d+", page.url)
         print(page.url)
+
+
+def test_29_06():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        page.goto("https://example.com")
+
+        # 2. Устанавливаем window.testReady = false
+        page.evaluate("window.testReady = false")
+
+        # 3. Через setTimeout делаем true через 2 секунды
+        page.evaluate("""
+                setTimeout(() => {
+                    window.testReady = true;
+                }, 2000);
+            """)
+
+        print("⏳ Ждём изменения состояния...")
+
+        # 4. Ждём через wait_for_function
+        page.wait_for_function("() => window.testReady === true")
+
+        # 5. Проверка
+        result = page.evaluate("window.testReady")
+        assert result is True, "testReady не стал true"
+
+        print("✅ Ожидание сработало! testReady = True")
+
+
+def test_29_07():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        page.goto("https://the-internet.herokuapp.com/download")
+        download = page.wait_for_event("download", timeout=5000)
+        page.locator("//a[text()='some-file.txt']").click()
+        download_path = Path("downloads")
+        download_path.mkdir(exist_ok=True)
+
+        file_path = download_path / download.suggested_filename
+        download.save_as(file_path)
+
+        # 4. Проверка
+        assert file_path.exists(), "Файл не скачался"
+
+
+
