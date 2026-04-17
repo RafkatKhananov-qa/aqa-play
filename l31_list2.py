@@ -51,4 +51,21 @@ def test_31_19():
             headless=False, slow_mo=1000
         )
         page = browser.new_page()
-        page.goto("https://the-internet.herokuapp.com/checkboxes")
+        page.goto("https://the-internet.herokuapp.com/")
+
+        items = page.locator("//li")
+
+        texts = items.evaluate_all(
+            "(elements) => elements.map(el => el.textContent.trim())"
+        )
+
+        assert "A/B Testing" in texts
+
+
+def test_31_20():
+    with (sync_playwright() as p):
+        browser = p.chromium.launch(
+            headless=False, slow_mo=1000
+        )
+        page = browser.new_page()
+        page.goto("https://the-internet.herokuapp.com/")

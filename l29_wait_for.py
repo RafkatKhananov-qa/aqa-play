@@ -1,6 +1,5 @@
 import re
 from pathlib import Path
-
 from playwright.sync_api import sync_playwright, expect
 import time
 
@@ -146,6 +145,3 @@ def test_29_07():
 
         # 4. Проверка
         assert file_path.exists(), "Файл не скачался"
-
-
-
